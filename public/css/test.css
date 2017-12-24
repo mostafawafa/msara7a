@@ -1,0 +1,128 @@
+body{
+    min-height: 500px;
+    background:url("../images/3.jpg");
+    background-size: cover;
+    color: #fff;
+}
+
+header{
+    background: rebeccapurple;
+    min-height:60px;
+}
+.main{
+    height:360px;
+}
+.blue{
+    height:1000px;
+    /*background-color: #bf5329;*/
+
+}
+
+.blue p{
+    margin: 20px;
+}
+
+.navbar{
+    background: rgba(102, 51, 153, 0.06);
+    border-radius: 0;
+
+}
+.navbar a{
+    color:#fff;
+
+}
+.nav > li > a:hover, .nav > li > a:focus{
+    background-color: midnightblue;
+}
+.red{
+    height:1000px;
+    /*background: #73beff;*/
+}
+.side{
+    height:260px;
+    /*background-color: brown;*/
+}
+
+h3{
+    color:#fff
+}
+.side-bar{
+    overflow: hidden;
+}
+
+.side-bar h3{
+    color: #fff;
+}
+.side-bar h4{
+    margin-top: 35px;
+}
+
+.person{
+    margin-bottom: 20px;
+}
+
+.hideSideBar{
+    position: fixed;
+    right:-2px;
+    top:70px;
+    padding:10px;
+    background-color: blueviolet;
+    margin:0;
+    border-radius: 6px;
+    color: #fff;
+}.showSideBar , .changeBg{
+    position: fixed;
+    right:-2px;
+    top:90px;
+    padding:10px;
+    background-color: blueviolet;
+    margin:0;
+    border-radius: 6px;
+    color: #fff;
+}
+
+footer{
+
+    position: fixed;
+    bottom:0;
+    left: 0;
+    right:0;
+    height: 50px;
+    background:rgba(102, 51, 153, 0.06) ;
+}
+
+footer  h4{
+    color: #fff;
+}
+
+.ask{
+    margin-bottom: 20px;
+
+}
+
+.send-form{
+    width:80%;
+    margin-top: 30px;
+}
+.overview {
+    padding: 10px;
+}
+
+.setting{
+    height: 1000px;
+}
+
+.admin-users{
+    min-height: 1000px;
+}
+
+.panel-body label,.panel h1{
+    color: #474774;
+}
+
+
+.panel_cust{
+    border: 3px solid #00B;
+    border-radius: 10px;
+    color: #000;
+}
