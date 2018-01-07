@@ -33,13 +33,14 @@ Route::get('/logout','UserController@logout');
 Route::get('/setting','UserController@showSetting');
 Route::post('/setting','UserController@saveSetting');
 
-Route::post('messages/{user}','MessageController@store');
 
 
 Route::get('tests',function(){
 
 //   dd(Storage::disk('public')->lastModified('file.txt'));
-    dd(Storage::url('avatars/c03Uh4igYGHwFu3ZCozkDx0MyGab3Bob2eu4S8pB.png'));
+//    dd(Storage::url('avatars/c03Uh4igYGHwFu3ZCozkDx0MyGab3Bob2eu4S8pB.png'));
+
+    dd(Auth::user()->id);
 
 });
 
@@ -47,6 +48,10 @@ Route::get('tests',function(){
 Route::get('home/messages','MessageController@showMessages');
 Route::get('home/questions','MessageController@showQuestions');
 Route::post('publish/{message}','MessageController@publish');
+Route::post('messages/{user}','MessageController@store');
+
+
+
 
 
 

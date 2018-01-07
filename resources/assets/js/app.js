@@ -21,6 +21,16 @@ const app = new Vue({
     el: '#app'
 });
 
+
+// Echo.private(`recieve.${user_id}`)
+//     .listen('SendMessage', (e) => {
+//     console.log(e.update);
+// });
+
+
+
+
+
 //
 // $('.setting #profilePicture').on('change',function(){
 //     $('.setting .profile-picture').attr('src',$('.setting #profilePicture').val())

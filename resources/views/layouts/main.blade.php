@@ -32,5 +32,21 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/test.js') }}"></script>
+<script>
+
+
+    Echo.private('r{{auth()->id()}}')
+        .listen('SendMessage', (e) => {
+            alert('new Message from+' + e.asker.name + " " + e.message);
+        console.log(e)
+
+    });
+
+
+;
+
+
+</script>
+@yield('scripts')
 </body>
 </html>

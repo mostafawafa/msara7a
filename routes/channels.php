@@ -14,3 +14,15 @@
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+
+Broadcast::channel('recieve.{user_id}',function($user,$user_id){
+
+    return true;
+
+});
+
+Broadcast::channel('r{user_id}',function($user,$user_id){
+
+    return $user->id == $user_id;
+});

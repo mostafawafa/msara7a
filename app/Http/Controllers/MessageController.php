@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SendMessage;
 use App\Message;
 use App\Repositories\MessagesRepository;
 use App\Repositories\UserRepository;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Events\MessageSent;
 use Intervention\Image\Exception\NotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -27,6 +29,8 @@ class MessageController extends Controller
                 $this->validate(request(),[
                     'message' =>'required',
                 ]);
+            ;
+
             //store
                 $message = new Message();
                 $message->user_id = $user->id;
@@ -35,7 +39,7 @@ class MessageController extends Controller
                 $message->category = request('category');
                 $message->save();
 
-
+            event(new SendMessage($user->id,auth()->user(),request('message')));
                 session()->flash('message','thanks');
                 return back();
 

@@ -23,14 +23,14 @@
                         {{csrf_field()}}
                         <div class="form-group">
                             <label for="message">Message:</label>
-                            <textarea name='message' class="form-control" rows="5" id="message"></textarea>
+                            <textarea id="message" name='message' class="form-control" rows="5" id="message"></textarea>
                         </div>
-                        <select name='category' class="form-control" id="category">
+                        <select id="category" name='category' class="form-control" id="category">
                             <option value="question">question</option>
                             <option value="message">message</option>
 
                         </select>
-                        <button type="submit" class="btn btn-primary text-center">send</button>
+                        <button id="sendMessage" type="button" class="btn btn-primary text-center">send</button>
 
                     </form>
 
@@ -60,4 +60,22 @@
 
 
 
-    @endsection
+@endsection
+
+@section('scripts')
+    <script>
+        $('#sendMessage').click(function(){
+            axios.post('/messages/{{$user->id}}',{
+                'message':$('#message').val      (),
+                'category':$('#category').val()
+            }).then(function(response){
+                console.log('ok');
+
+            }).catch(function(error){
+                console.log(error);
+            })
+
+        })
+    </script>
+
+@endsection

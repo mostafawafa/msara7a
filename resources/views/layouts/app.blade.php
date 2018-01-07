@@ -77,5 +77,16 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+
+        console.log('reciever{{auth()->id()}}');
+
+
+        Echo.private('reciever{{auth()->id()}}')
+            .listen('SendMessage', (e) => {
+            console.log(e);
+        });
+    </script>
+
 </body>
 </html>
