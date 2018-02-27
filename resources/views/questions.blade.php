@@ -46,7 +46,11 @@
                 </div>
             </div>
         </div>
+        
+        <div class="text-center">
+        {{ $questions->links() }}
 
+        </div>
 
     </section>
 

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Events\MessageSent;
 use Intervention\Image\Exception\NotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use App\Repositories\IMessagesRepository;
 
 class MessageController extends Controller
 {
@@ -20,18 +21,14 @@ class MessageController extends Controller
             $this->middleware('auth')->except(['store','create']);
         }
 
-
-
-
-
         public function store(User $user){
             //validate
                 $this->validate(request(),[
                     'message' =>'required',
                 ]);
-            ;
 
             //store
+            
                 $message = new Message();
                 $message->user_id = $user->id;
                 $message->sender_id = auth()->check()?auth()->id():null;
@@ -40,8 +37,6 @@ class MessageController extends Controller
                 $message->save();
 
             event(new SendMessage($user->id,auth()->user(),request('message')));
-                session()->flash('message','thanks');
-                return back();
 
 
         }
@@ -59,10 +54,10 @@ class MessageController extends Controller
 
             return view('questions',compact('questions'));
         }
+    
 
 
-
-        public function publish(Message $message,MessagesRepository $messageRepository){
+        public function publish(Message $message,IMessagesRepository $messageRepository){
             //publish
 
             if(request('response') !== null){
@@ -80,6 +75,13 @@ class MessageController extends Controller
             $messageRepository->unpublish($message);
 
             return back();
+
+        }
+
+
+        public function sentMessages(IMessagesRepository $messageRepository){
+            $messages = $messageRepository->getSentMessages();
+            return view('sentMessages',compact('messages'));
 
         }
 

@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Welcome;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,6 +54,11 @@ Route::post('publish/{message}','MessageController@publish');
 Route::post('messages/{user}','MessageController@store');
 
 
+Route::get('/test',function(){
+
+    dd(app('url'));
+
+});
 
 
 
@@ -63,3 +71,6 @@ Route::post('/admin/edit/{user}','AdminController@submitEdit');
 Route::get('/user/{user}/delete','UserController@delete');
 
 Route::get('admin/search','AdminController@search');
+
+
+Route::get('/sender','MessageController@sentMessages');

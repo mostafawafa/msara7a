@@ -48,7 +48,11 @@ import Echo from 'laravel-echo'
 window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
+    /*
     broadcaster: 'pusher',
     key: '1e42c0e8ffce7e0770ce',
     cluster : 'eu'
+    */
+    broadcaster: 'socket.io',
+    host: window.location.hostname + ':6001'
 });

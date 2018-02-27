@@ -14,13 +14,21 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/test.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
+
 
 
 </head>
 <body>
-@include('layouts.nav')
+    <div id='app'>
+
+    @include('layouts.nav')
 
 @yield('main')
+
+    </div>
 
 <div class="clearfix"></div>
 
@@ -30,17 +38,19 @@
 <button class="changeBg" id="changeBg">change <br> background</button>
 
 <!-- Scripts -->
+<script>
+    var Config = {
+        id : '{{auth()->id()}}'
+    }
+
+</script>
+<script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/test.js') }}"></script>
 <script>
 
 
-    Echo.private('r{{auth()->id()}}')
-        .listen('SendMessage', (e) => {
-            alert('new Message from+' + e.asker.name + " " + e.message);
-        console.log(e)
-
-    });
+  
 
 
 ;

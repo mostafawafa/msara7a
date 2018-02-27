@@ -16,7 +16,7 @@ class UserRepository
 
     public function getUserMessages(){
 
-       return $this->getUserByCategory('message');
+       return $this->getUserByCategory('message')->simplePaginate(5);
 
     }
 
@@ -26,23 +26,16 @@ class UserRepository
 
     }
 
-    public function getUserByCategory($category){
+    protected function getUserByCategory($category){
 
 
-        return auth()->user()->messages()->latest()->with(['sender','response'])->where('category',$category)->get();
-
-    }
-
-
-    public function getPublishedQuestions($user){
-
-
+        return auth()->user()->messages()->latest()->with(['sender','response'])->where('category',$category);
 
     }
 
-    public function getRandomUsers($number){
+
+    public function getRandomUsers($number){  
         return  User::inRandomOrder()->take($number);
-
     }
 
 

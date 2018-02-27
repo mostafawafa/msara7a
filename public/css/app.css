@@ -8354,3 +8354,7 @@ button.close {
   padding: 20px;
 }
 
+.navbar .active {
+  color: red;
+}
+

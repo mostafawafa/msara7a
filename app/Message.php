@@ -8,7 +8,7 @@ class Message extends Model
 {
 
     public function owner(){
-        return   $this->belongsTo(User::class,'user_id');
+     return   $this->belongsTo(User::class,'user_id');
     }
  public function sender(){
     return  $this->belongsTo(User::class,'sender_id');

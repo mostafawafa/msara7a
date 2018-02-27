@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mostafa
- * Date: 01/07/2017
- * Time: 03:51 ص
- */
+
 
 namespace App\Repositories;
 
@@ -12,7 +7,7 @@ namespace App\Repositories;
 use App\Message;
 use App\Response;
 
-class MessagesRepository
+class MessagesRepository implements IMessagesRepository
 {
 
     function publish(Message $message){
@@ -41,6 +36,10 @@ class MessagesRepository
           $response = new Response(['body'=>request('response')]);
          $message->response()->save($response);
          return back();
+      }
+
+      public function getSentMessages(){
+        return auth()->user()->sentMessages()->latest()->with('owner','response')->get();
       }
 
 

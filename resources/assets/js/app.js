@@ -18,10 +18,26 @@ window.Vue = require('vue');
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        isActive:false,
+        notifications : 0
+    },
+    mounted(){
+        Echo.private('r' + Config.id)
+        .listen('SendMessage', function(e) {
+            this.isActive = true;
+            this.notifications ++;
+           // alert('new Message from+' + e.asker.name + " " + e.message);
+        console.log(e)
+ 
+    }.bind(this) );      
+    }
 });
 
 
+import swal from 'sweetalert'
+window.swal = swal;
 // Echo.private(`recieve.${user_id}`)
 //     .listen('SendMessage', (e) => {
 //     console.log(e.update);

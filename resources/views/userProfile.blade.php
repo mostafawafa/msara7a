@@ -66,13 +66,16 @@
     <script>
         $('#sendMessage').click(function(){
             axios.post('/messages/{{$user->id}}',{
-                'message':$('#message').val      (),
+                'message':$('#message').val(),
                 'category':$('#category').val()
             }).then(function(response){
-                console.log('ok');
+                $('#message').val('');
+                swal("Good job!", "You send the message!", "success");
+
 
             }).catch(function(error){
-                console.log(error);
+                swal("fuck off!", "try again later!", "error");
+
             })
 
         })

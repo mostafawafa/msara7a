@@ -8,6 +8,7 @@ use App\Repositories\UserRepository;
 use App\User;
 use Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -30,8 +31,9 @@ class UserController extends Controller
     }
 
     public function showUserProfile($id){
-
         $user = User::find($id);
+        //dd(Storage::url($user->profile_photo));
+
         if(is_null($user)){
             return redirect('/home');
         }
@@ -41,7 +43,7 @@ class UserController extends Controller
     public function saveSetting(){
 
         $this->validate(request(),[
-            'name' => 'required|unique:users,name,' . auth()->id(),
+            'name' => 'required' ,
             'email' => 'required|unique:users,email,'. auth()->id(),
             'user_name' => 'required|unique:users,user_name,'.auth()->id() . '|alpha_dash',
             'profilePicture' => 'image',
