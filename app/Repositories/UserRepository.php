@@ -22,7 +22,7 @@ class UserRepository
 
     public function getUserQuestions(){
 
-        return $this->getUserByCategory('question');
+        return $this->getUserByCategory('question')->simplePaginate(5);
 
     }
 
